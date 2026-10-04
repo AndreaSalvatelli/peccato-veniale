@@ -1,0 +1,3 @@
+import {recruitment as job} from '@/data/recruitment';
+import SectionHeading from './SectionHeading';
+export default function HowItWorksSection(){return <section id="come-funziona" className="how-section"><div className="wrap"><div className="section-top"><div><SectionHeading index="04" label="COME FUNZIONA">Una serata di lavoro.<br/><em>Passo dopo passo.</em></SectionHeading></div><p>Dall’uscita di casa al rientro: ecco come si svolge il turno di una ragazza immagine.</p></div><ol className="work-timeline">{job.steps.map(s=><li key={s.title}><div><span className="step-time">{s.time}</span><h3>{s.title}</h3><p>{s.description}</p></div></li>)}</ol></div></section>}

@@ -1,0 +1,1 @@
+export default function SectionHeading({index,label,children,as:Tag='h2'}:{index?:string;label:string;children:React.ReactNode;as?:'h1'|'h2'}){return <><p className="eyebrow"><span/>{index?index+' / ':''}{label}</p><Tag>{children}</Tag></>}

@@ -1,0 +1,26 @@
+# Dependencies and generated output
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+coverage/
+# Local configuration and secrets (only sanitized template is tracked)
+.env*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+credentials*.json
+service-account*.json
+secrets/
+.npmrc
+# Temporary files and local tools
+*.log
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+work/

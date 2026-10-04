@@ -1,0 +1,1 @@
+export default function TikTokIcon({size=24}:{size?:number}){return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.3 2.1 1.5 3.4 3.4 3.6v3.2a8 8 0 0 1-3.4-1v6.4a6 6 0 1 1-5.2-5.9v3.3a2.7 2.7 0 1 0 1.9 2.6V3z"/></svg>;}

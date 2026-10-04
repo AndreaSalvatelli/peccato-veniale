@@ -1,0 +1,13 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+import {Menu, X, Instagram, Facebook, ArrowUpRight} from 'lucide-react';
+import {navigation,whatsappLink,reservationMessage} from '@/data/settings';
+import TikTokIcon from './TikTokIcon';
+import {socials} from '@/data/social';
+import Logo from './Logo';
+export default function Header({eventsPage=false}:{eventsPage?:boolean}) {
+ const links=navigation.map(n=>({...n,href:eventsPage&&n.href.startsWith("#")&&n.href!=="#gallery"?"/"+n.href:n.href}));
+ const [open,setOpen]=useState(false); const toggle=useRef<HTMLButtonElement>(null); const panel=useRef<HTMLDivElement>(null);
+ useEffect(()=>{if(!open)return; const old=document.body.style.overflow; document.body.style.overflow='hidden'; const close=(e:KeyboardEvent)=>{if(e.key==='Escape'){setOpen(false);toggle.current?.focus();} if(e.key==='Tab'){const links=panel.current?.querySelectorAll<HTMLAnchorElement>('a');const first=links?.[0],last=links?.[links.length-1];if(e.shiftKey && document.activeElement===toggle.current){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();toggle.current?.focus();}}};document.addEventListener('keydown',close);return()=>{document.body.style.overflow=old;document.removeEventListener('keydown',close)};},[open]);
+ return <header className="header"><div className="header-inner"><Logo/><nav className="desktop-nav" aria-label="Menu principale">{links.map(n=><a key={n.href} href={n.href}>{n.label}</a>)}</nav><a className="button button-small header-book" href={whatsappLink(reservationMessage)} target="_blank" rel="noopener noreferrer">Prenota un tavolo <ArrowUpRight size={15}/></a><button ref={toggle} className="menu-toggle icon-button" aria-label={open?'Chiudi menu':'Apri menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button></div>{open&&<div ref={panel} id="mobile-menu" className="mobile-menu"><nav aria-label="Menu mobile">{links.map((n,i)=><a key={n.href} href={n.href} onClick={()=>setOpen(false)}>{!eventsPage&&<span>0{i+1}</span>}{n.label}<ArrowUpRight size={20}/></a>)}</nav><a className="button mobile-menu-book" href={whatsappLink(reservationMessage)} target="_blank" rel="noopener noreferrer">Prenota un tavolo <ArrowUpRight size={18}/></a><div className="social-icons"><a href={socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram/></a><a href={socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook/></a><a href={socials.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok"><TikTokIcon/></a></div></div>}</header>
+}

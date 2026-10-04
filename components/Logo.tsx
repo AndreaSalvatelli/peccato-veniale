@@ -1,0 +1,1 @@
+export default function Logo() { return <a href="/#top" className="logo" aria-label="Peccato Veniale, inizio pagina"><span>Peccato<span className="logo-dot">.</span></span><small>VENIALE</small></a>; }

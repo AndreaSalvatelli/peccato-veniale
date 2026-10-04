@@ -1,0 +1,3 @@
+import {Check,ArrowUpRight} from 'lucide-react';
+import {recruitment as job} from '@/data/recruitment';
+export default function HousingSection(){return <section className="section wrap housing-section" aria-labelledby="housing-heading"><div><p className="eyebrow"><span/>03 / ALLOGGIO E SPOSTAMENTI</p><h3 id="housing-heading">Arrivi, ti sistemi.<br/>Al viaggio pensiamo noi.</h3><p>{job.housing.description}</p><ul className="housing-features">{job.housing.features.map(f=><li key={f}><Check size={20}/><span>{f}</span></li>)}</ul><p>{job.housing.sharedCare}</p><a className="text-link" href="#contatti">Chiedi informazioni sull’alloggio <ArrowUpRight size={18}/></a></div></section>}

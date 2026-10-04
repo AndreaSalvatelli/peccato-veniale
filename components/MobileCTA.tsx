@@ -1,0 +1,3 @@
+import {MessageCircle,Phone,ArrowUpRight} from 'lucide-react';
+import {site,whatsappLink,applicationMessage,reservationMessage} from '@/data/settings';
+export default function MobileCTA({booking=false}:{booking?:boolean}){return <div className="mobile-cta"><a className="button" href={booking?whatsappLink(reservationMessage):"/#contatti"}>{booking?"Prenota un tavolo":"Candidati"} <ArrowUpRight size={17}/></a><a className="icon-button" href={whatsappLink(booking?reservationMessage:applicationMessage)} target="_blank" rel="noopener noreferrer" aria-label={booking?"Prenota su WhatsApp":"Candidati su WhatsApp"}><MessageCircle size={23}/></a><a className="icon-button" href={'tel:'+site.phone} aria-label="Chiamaci"><Phone size={21}/></a></div>}
